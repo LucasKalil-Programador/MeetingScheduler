@@ -48,9 +48,13 @@ namespace MeetingScheduler.Components
 
 
             bool status = DB.InsertClient(newClient, PasswordTextBox.Text);
-          
+            
             ShowMessage(status);
-            CleanTextBox();
+            if (status)
+            {
+                ValidColorChanged.Invoke(DB.SelectClientByNameAndPassword(NameTextBox.Text, PasswordTextBox.Text));
+                CleanTextBox();
+            }
         }
 
         private void ShowMessage(bool success)

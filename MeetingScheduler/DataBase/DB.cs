@@ -32,37 +32,54 @@ namespace MeetingScheduler
         {
             lock (connection)
             {
+                if(ExistsClientByNameAndPassword(client.Name, password)) return false;
                 string command =
                     "Insert into Client (name, password, document, phone, email, office) " +
                     $"values ('{client.Name}', '{password}', '{client.Document}', '{client.Phone}', '{client.Email}', '{client.Office}');";
                 MySqlCommand cmd = new(command, connection.Value);
                 int rows = cmd.ExecuteNonQuery();
-                
                 return rows == 1;
             }
         }
 
         public static Client SelectClientByNameAndPassword(string name, string password)
         {
-            Client client = default;
             lock (connection)
             {
-                string command = $"select * from client where name = '{name}' and password = '{password}';";
-                MySqlCommand cmd = new(command, connection.Value);
-                MySqlDataReader Reader =  cmd.ExecuteReader();
-                while (Reader.Read())
+                Client client = default;
+                lock (connection)
                 {
-                    client = new Clientfactory()
-                        .SetId(int.Parse(Reader.GetString(0)))
-                        .SetName(Reader.GetString(1))
-                        .SetDocument(Reader.GetString(3))
-                        .SetPhone(Reader.GetString(4))
-                        .SetEmail(Reader.GetString(5))
-                        .SetOffice(Reader.GetString(6))
-                        .Build();
+                    string command = $"select * from client where name = '{name}' and password = '{password}';";
+                    MySqlCommand cmd = new(command, connection.Value);
+                    MySqlDataReader Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        client = new Clientfactory()
+                            .SetId(int.Parse(Reader.GetString(0)))
+                            .SetName(Reader.GetString(1))
+                            .SetDocument(Reader.GetString(3))
+                            .SetPhone(Reader.GetString(4))
+                            .SetEmail(Reader.GetString(5))
+                            .SetOffice(Reader.GetString(6))
+                            .Build();
+                    }
+                    Reader.Close();
+                    return client;
                 }
+            }
+        }
+
+        public static bool ExistsClientByNameAndPassword(string name, string password)
+        {
+            lock (connection)
+            {
+                string command = $"select count(*) from client where name = '{name}' and password = '{password}';";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                Reader.Read();
+                int count = Reader.GetInt32(0);
                 Reader.Close();
-                return client;
+                return count >= 1;
             }
         }
 
