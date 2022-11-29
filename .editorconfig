@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8629: O tipo de valor de nulidade pode ser nulo.
+dotnet_diagnostic.CS8629.severity = none
