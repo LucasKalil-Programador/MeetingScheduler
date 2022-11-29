@@ -1,4 +1,4 @@
-﻿namespace MeetingScheduler.objects
+﻿namespace MeetingScheduler.Objects
 {
     public struct Client
     {
@@ -22,20 +22,14 @@
 
     public class Clientfactory
     {
-        private int Id = -1;
-        private string Name = string.Empty;
-        private string Document = string.Empty;
-        private string Phone = string.Empty;
-        private string Email = string.Empty;
-        private string Office = string.Empty;
+        public int Id = -1;
+        public string Name = string.Empty;
+        public string Document = string.Empty;
+        public string Phone = string.Empty;
+        public string Email = string.Empty;
+        public string Office = string.Empty;
 
         public Client Build() => new(Id, Name, Document, Phone, Email, Office);
-
-
-        public bool IsValid()
-        {
-            return Id != -1 && Name != string.Empty && Document != string.Empty && Phone != string.Empty && Email != string.Empty && Office != string.Empty;
-        }
 
         public Clientfactory SetId(int id)
         {

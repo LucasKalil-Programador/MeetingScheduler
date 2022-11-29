@@ -1,4 +1,4 @@
-﻿namespace MeetingScheduler.objects
+﻿namespace MeetingScheduler.Objects
 {
     public struct Location
     {

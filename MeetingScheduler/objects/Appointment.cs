@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MeetingScheduler.objects
+namespace MeetingScheduler.Objects
 {
     public struct Appointment
     {
@@ -22,17 +22,16 @@ namespace MeetingScheduler.objects
 
     public class AppointmentFactory
     {
-        private int Id = -1;
-        private Client? Client = null;
-        private DateTime StartDateTime = default;
-        private DateTime EndDateTime = default;
-        private string Reason = string.Empty;
+        public int Id = -1;
+        public Client? Client = null;
+        public DateTime StartDateTime = default;
+        public DateTime EndDateTime = default;
+        public string Reason = string.Empty;
 
         public Appointment Build() => new(Id, Client.Value, StartDateTime, EndDateTime, Reason);
 
         public bool IsValid()
         {
-
             return Id != -1 &&
                    Client.HasValue &&
                    StartDateTime != default &&
@@ -69,5 +68,7 @@ namespace MeetingScheduler.objects
             this.Reason = reason;
             return this;
         }
+    
+
     }
 }

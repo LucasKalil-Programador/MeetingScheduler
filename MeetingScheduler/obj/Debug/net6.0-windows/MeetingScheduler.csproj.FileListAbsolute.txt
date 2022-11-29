@@ -27,3 +27,7 @@ C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\n
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\MeetingScheduler.pdb
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\MeetingScheduler.genruntimeconfig.cache
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\ref\MeetingScheduler.dll
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\UserRegister.g.cs
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\UserRegister.baml
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\App.baml
