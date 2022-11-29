@@ -1,5 +1,5 @@
 ﻿MeetingScheduler
-1.0.0.0
+
 
 exe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\App.xaml
 11407045341
 
-10189259367
+81056616040
 201-1451963523
 MainWindow.xaml;
 

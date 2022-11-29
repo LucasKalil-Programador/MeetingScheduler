@@ -23,6 +23,7 @@ namespace MeetingScheduler
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("Banco de dados: " + DB.Ping());
         }
     }
 }
