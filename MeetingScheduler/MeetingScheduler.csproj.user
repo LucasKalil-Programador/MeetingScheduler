@@ -7,11 +7,17 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\UserLogin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\UserRegister.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Components\UserLogin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\UserRegister.xaml">
       <SubType>Designer</SubType>
     </Page>
