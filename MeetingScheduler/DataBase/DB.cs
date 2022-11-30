@@ -32,10 +32,10 @@ namespace MeetingScheduler
         {
             lock (connection)
             {
-                if(ExistsClientByNameAndPassword(client.Name, password)) return false;
+                if(ExistsClientByName(client.Name)) return false;
                 string command =
                     "Insert into Client (name, password, document, phone, email, office) " +
-                    $"values ('{client.Name}', '{password}', '{client.Document}', '{client.Phone}', '{client.Email}', '{client.Office}');";
+                    $"values ('{client.Name}', '{password.GetHashCode()}', '{client.Document}', '{client.Phone}', '{client.Email}', '{client.Office}');";
                 MySqlCommand cmd = new(command, connection.Value);
                 int rows = cmd.ExecuteNonQuery();
                 return rows == 1;
@@ -49,7 +49,7 @@ namespace MeetingScheduler
                 Client client = default;
                 lock (connection)
                 {
-                    string command = $"select * from client where name = '{name}' and password = '{password}';";
+                    string command = $"select * from client where name = '{name}' and password = '{password.GetHashCode()}';";
                     MySqlCommand cmd = new(command, connection.Value);
                     MySqlDataReader Reader = cmd.ExecuteReader();
                     while (Reader.Read())
@@ -69,11 +69,11 @@ namespace MeetingScheduler
             }
         }
 
-        public static bool ExistsClientByNameAndPassword(string name, string password)
+        public static bool ExistsClientByName(string name)
         {
             lock (connection)
             {
-                string command = $"select count(*) from client where name = '{name}' and password = '{password}';";
+                string command = $"select count(*) from client where name = '{name}';";
                 MySqlCommand cmd = new(command, connection.Value);
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 Reader.Read();
