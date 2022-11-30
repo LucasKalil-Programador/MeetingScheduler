@@ -65,7 +65,13 @@ namespace MeetingScheduler.Components
             }
             else
             {
-                MessageBox.Show("User registration error", "error", MessageBoxButton.OK);
+                string errorSTR = "User registration error";
+                if (DB.ExistsClientByName(NameTextBox.Text))
+                {
+                    errorSTR += "\r\nuser name already exists";
+                    NameTextBox.Background = new SolidColorBrush(Color.FromRgb(255, 100, 100));
+                }
+                MessageBox.Show(errorSTR, "error", MessageBoxButton.OK);
             }
         }
 
