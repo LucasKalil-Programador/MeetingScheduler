@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\AddNewLocation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\FullCalendar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,8 +28,14 @@
     <Compile Update="Components\UserRegister.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="OtherWindows\LocationUserRequest.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Components\AddNewLocation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\FullCalendar.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -46,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="OtherWindows\LocationUserRequest.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

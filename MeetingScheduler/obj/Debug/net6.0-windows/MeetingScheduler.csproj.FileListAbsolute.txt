@@ -41,3 +41,7 @@ C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\n
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\FullCalendar.baml
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\MeetingCreator.g.cs
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\MeetingCreator.baml
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\OtherWindows\LocationUserRequest.g.cs
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\OtherWindows\LocationUserRequest.baml
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\AddNewLocation.g.cs
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\AddNewLocation.baml
