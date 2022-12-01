@@ -24,19 +24,32 @@ namespace MeetingScheduler.Components
         public int Year { get; private set; }
         public int Month { get; private set; }
 
+        public Action<Button, int> OnDayClick = (button, day) => { };
+
         public MonthCalendar()
         {
             InitializeComponent();
-            SetMonth(DateTime.Now.Year, DateTime.Now.Month);
+            for(int i = 0; i < grid.Children.Count; i++)
+            {
+                Button? button = GetButtonDay(i);
+                if(button != null)
+                {
+                    int day = i;
+                    button.Tag = day;
+                    button.Content = day.ToString();
+                    button.Click += (s, a) => OnDayClick(button, day);      
+                }
+            }
         }
 
         public Button? GetButtonDay(int day)
         {
-            foreach (Control control in grid.Children)
+            day--;
+            foreach (FrameworkElement control in grid.Children)
             {
                 if (control is Button button)
                 {
-                    if ((day / 7) == Grid.GetRow(button) && (day % 7) == Grid.GetColumn(button))
+                    if ((day / 7) + 1 == Grid.GetRow(button) && (day % 7) == Grid.GetColumn(button))
                     {
                         return button;
                     }
@@ -51,7 +64,7 @@ namespace MeetingScheduler.Components
             if (button != null) button.Content = content;
         }
 
-        public void SetMonth(int year, int month)
+        public void SetYearAndMonth(int year, int month)
         {
             Year = year;
             Month = month;
@@ -61,11 +74,10 @@ namespace MeetingScheduler.Components
                 Button? button = GetButtonDay(i);
                 if (button != null)
                 {
-                    button.Content = $"Day {i}";
                     if (i <= VisibleDays)
                     {
                         button.Visibility = Visibility.Visible;
-                        button.IsEnabled = true;
+                        button.IsEnabled = new DateTime(year, month, i) > DateTime.Now;
                     }
                     else
                     {

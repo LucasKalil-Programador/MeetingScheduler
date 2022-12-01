@@ -20,9 +20,64 @@ namespace MeetingScheduler.Components
     /// </summary>
     public partial class FullCalendar : UserControl
     {
+        private int month;
+        private int year;
+
+        public Action<DateTime> OnDateClick = (date) => { };
+
         public FullCalendar()
         {
             InitializeComponent();
+            monthCalendar.OnDayClick += OnDayClick;
+
+            DateTime now = DateTime.Now; 
+            monthCalendar.SetYearAndMonth(now.Year, now.Month);
+            month = monthCalendar.Month;
+            year = monthCalendar.Year;
+            UpdateDate();
+        }
+
+        private void OnDayClick(Button button, int day)
+        {
+            DateTime ClickedDate = new DateTime(year, month, day);
+            if (ClickedDate > DateTime.Now)
+            {
+                OnDateClick.Invoke(ClickedDate);
+            }
+        }
+
+        private void NextMonthClick(object sender, RoutedEventArgs e)
+        {
+            if (month < 12)
+            {
+                month++;
+            }
+            else
+            {
+                month = 1;
+                year++;
+            }
+            UpdateDate();
+        }
+
+        private void PreviousButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (month > 1)
+            {
+                month--;
+            }
+            else
+            {
+                month = 12;
+                year--;
+            }
+            UpdateDate();
+        }
+
+        private void UpdateDate()
+        {
+            dateTextBlock.Text = $"{month}/{year}";
+            monthCalendar.SetYearAndMonth(year, month);
         }
     }
 }

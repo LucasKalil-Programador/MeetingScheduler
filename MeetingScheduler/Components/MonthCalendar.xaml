@@ -18,6 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -25,13 +26,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="0" Grid.Row="0" Margin="5"/>
-        <Button Grid.Column="1" Grid.Row="0" Margin="5"/>
-        <Button Grid.Column="2" Grid.Row="0" Margin="5"/>
-        <Button Grid.Column="3" Grid.Row="0" Margin="5"/>
-        <Button Grid.Column="4" Grid.Row="0" Margin="5"/>
-        <Button Grid.Column="5" Grid.Row="0" Margin="5"/>
-        <Button Grid.Column="6" Grid.Row="0" Margin="5"/>
+        <TextBlock Text="Sun" Grid.Column="0"/>
+        <TextBlock Text="Mon" Grid.Column="1"/>
+        <TextBlock Text="Tue" Grid.Column="2"/>
+        <TextBlock Text="Wed" Grid.Column="3"/>
+        <TextBlock Text="Thu" Grid.Column="4"/>
+        <TextBlock Text="Fri" Grid.Column="5"/>
+        <TextBlock Text="Sat" Grid.Column="6"/>
 
         <Button Grid.Column="0" Grid.Row="1" Margin="5"/>
         <Button Grid.Column="1" Grid.Row="1" Margin="5"/>
@@ -64,5 +65,13 @@
         <Button Grid.Column="4" Grid.Row="4" Margin="5"/>
         <Button Grid.Column="5" Grid.Row="4" Margin="5"/>
         <Button Grid.Column="6" Grid.Row="4" Margin="5"/>
+
+        <Button Grid.Column="0" Grid.Row="5" Margin="5"/>
+        <Button Grid.Column="1" Grid.Row="5" Margin="5"/>
+        <Button Grid.Column="2" Grid.Row="5" Margin="5"/>
+        <Button Grid.Column="3" Grid.Row="5" Margin="5"/>
+        <Button Grid.Column="4" Grid.Row="5" Margin="5"/>
+        <Button Grid.Column="5" Grid.Row="5" Margin="5"/>
+        <Button Grid.Column="6" Grid.Row="5" Margin="5"/>
     </Grid>
 </UserControl>
