@@ -7,6 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\FullCalendar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\MonthCalendar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\UserHome.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\UserLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +24,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Components\FullCalendar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\MonthCalendar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\UserHome.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\UserLogin.xaml">
       <SubType>Designer</SubType>
     </Page>

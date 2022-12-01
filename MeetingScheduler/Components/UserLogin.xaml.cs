@@ -31,7 +31,7 @@ namespace MeetingScheduler.Components
 
         private void OnLoginButtonClick(object sender, RoutedEventArgs e)
         {
-            if(!(UserNameTextBox.IsValidInput(@"[a-zA-Z ]+", ValidColor) && 
+            if(!(UserNameTextBox.IsValidInput(@"[a-zA-Z ]+", ValidColor) &
                 PasswordTextBox.IsValidInput(@"\w+", ValidColor)))
             {
                 return;

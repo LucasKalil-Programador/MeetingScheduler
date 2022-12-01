@@ -31,7 +31,8 @@ namespace MeetingScheduler
             userRegister.ReturnButton.Click += (s, a) => ChangeControl(userLogin);
 
             userLogin.RegisterButton.Click += (s, a) => ChangeControl(userRegister);
-            userLogin.OnLogin += (c) => Console.WriteLine($"Logado com sucesso: ID={c.Id} Name={c.Name}");
+            userLogin.OnLogin += userHome.LogClient;
+            userLogin.OnLogin += (c) => ChangeControl(userHome);
         }
 
         public void ChangeControl(UserControl newControl)

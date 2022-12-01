@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Security.Cryptography;
 
 namespace MeetingScheduler
 {
@@ -37,6 +38,14 @@ namespace MeetingScheduler
             Console.WriteLine(regexp.Replace(textBox.Password.ToString(), "", 1));
             textBox.Background = validColor;
             return true;
+        }
+    
+        public static string HashPassword(string password)
+        {
+            var sha = SHA256.Create();
+            var bytes = Encoding.Default.GetBytes(password);
+            var hash = sha.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
         }
     }
 }

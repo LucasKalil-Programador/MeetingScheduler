@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using MeetingScheduler.Objects;
+using MeetingScheduler;
 
 namespace MeetingScheduler
 {
@@ -35,8 +36,7 @@ namespace MeetingScheduler
                 if (ExistsClientByName(client.Name)) return false;
                 string command =
                     "Insert into Client (name, password, document, phone, email, office) " +
-                    $"values ('{client.Name}', '{password.GetHashCode()}', '{client.Document}', '{client.Phone}', '{client.Email}', '{client.Office}');";
-                Console.WriteLine(command);
+                    $"values ('{client.Name}', '{Utils.HashPassword(password)}', '{client.Document}', '{client.Phone}', '{client.Email}', '{client.Office}');";
                 MySqlCommand cmd = new(command, connection.Value);
                 int rows = cmd.ExecuteNonQuery();
                 return rows == 1;
@@ -48,8 +48,7 @@ namespace MeetingScheduler
             lock (connection)
             {
                 Client client = default;
-                string command = $"select * from client where name='{name}' and password='{password.GetHashCode()}';";
-                Console.WriteLine(command);
+                string command = $"select * from client where name='{name}' and password='{Utils.HashPassword(password)}';";
                 MySqlCommand cmd = new(command, connection.Value);
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
