@@ -61,17 +61,17 @@ namespace MeetingScheduler.Components
         {
             if (success)
             {
-                MessageBox.Show(App.Current.MainWindow, "Successfully registered user", "Success", MessageBoxButton.OK);
+                MessageBox.Show(App.Current.MainWindow, "Usuario registrado com sucesso", "Sucesso", MessageBoxButton.OK);
             }
             else
             {
-                string errorSTR = "User registration error";
+                string errorSTR = "Erro ao registrar usuario";
                 if (DB.ExistsClientByName(NameTextBox.Text))
                 {
-                    errorSTR += "\r\nuser name already exists";
+                    errorSTR += "\r\nNome de usuario ja existente";
                     NameTextBox.Background = new SolidColorBrush(Color.FromRgb(255, 100, 100));
                 }
-                MessageBox.Show(App.Current.MainWindow, errorSTR, "error", MessageBoxButton.OK);
+                MessageBox.Show(App.Current.MainWindow, errorSTR, "Error", MessageBoxButton.OK);
             }
         }
 

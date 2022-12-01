@@ -18,7 +18,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="userNameTextBlock" Grid.Column="1" Text="User home"/>
+            <TextBlock x:Name="userNameTextBlock" Grid.Column="1" Text="Area do usuario: "/>
         </Grid>
 
         <local:FullCalendar Grid.Row="1"/>

@@ -41,7 +41,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="User name"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Nome de usuario"/>
                 <TextBox x:Name="UserNameTextBox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
                     <TextBox.Resources>
                         <Style TargetType="Border">
@@ -50,7 +50,7 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="Password"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="Senha"/>
                 <PasswordBox x:Name="PasswordTextBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
             </Grid>
 
@@ -68,8 +68,8 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="1"  Content="Login In" Click="OnLoginButtonClick"/>
-                <Button x:Name="RegisterButton" Grid.Row="2" Grid.Column="1"  Content="Register"/>
+                <Button Grid.Row="0" Grid.Column="1"  Content="Entrar" Click="OnLoginButtonClick"/>
+                <Button x:Name="RegisterButton" Grid.Row="2" Grid.Column="1"  Content="Registrar novo usuario"/>
             </Grid>
         </Grid>
     </Grid>

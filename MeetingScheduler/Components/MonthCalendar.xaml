@@ -26,13 +26,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Sun" Grid.Column="0"/>
-        <TextBlock Text="Mon" Grid.Column="1"/>
-        <TextBlock Text="Tue" Grid.Column="2"/>
-        <TextBlock Text="Wed" Grid.Column="3"/>
-        <TextBlock Text="Thu" Grid.Column="4"/>
-        <TextBlock Text="Fri" Grid.Column="5"/>
-        <TextBlock Text="Sat" Grid.Column="6"/>
+        <TextBlock Text="D" Grid.Column="0"/>
+        <TextBlock Text="S" Grid.Column="1"/>
+        <TextBlock Text="T" Grid.Column="2"/>
+        <TextBlock Text="Q" Grid.Column="3"/>
+        <TextBlock Text="Q" Grid.Column="4"/>
+        <TextBlock Text="S" Grid.Column="5"/>
+        <TextBlock Text="S" Grid.Column="6"/>
 
         <Button Grid.Column="0" Grid.Row="1" Margin="5"/>
         <Button Grid.Column="1" Grid.Row="1" Margin="5"/>

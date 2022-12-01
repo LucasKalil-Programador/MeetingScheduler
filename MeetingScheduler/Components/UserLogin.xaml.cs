@@ -46,7 +46,7 @@ namespace MeetingScheduler.Components
             }
             else
             {
-                MessageBox.Show(App.Current.MainWindow, "Invalid user name or password", "Login error", MessageBoxButton.OK);
+                MessageBox.Show(App.Current.MainWindow, "Usuario ou senha invalida", "Login error", MessageBoxButton.OK);
             }
         }
     }

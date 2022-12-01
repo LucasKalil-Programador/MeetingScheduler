@@ -28,7 +28,7 @@ namespace MeetingScheduler.Components
         public void LogClient(Client newClient)
         {
             LogedClient = newClient;
-            userNameTextBlock.Text = $"User home loged with: {LogedClient.Name}";
+            userNameTextBlock.Text = $"Area do usuario: {LogedClient.Name}";
         }
     }
 }
