@@ -78,7 +78,7 @@ namespace MeetingScheduler.OtherWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MeetingScheduler;component/otherwindows/locationuserrequest.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MeetingScheduler;V1.0.0.0;component/otherwindows/locationuserrequest.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\OtherWindows\LocationUserRequest.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

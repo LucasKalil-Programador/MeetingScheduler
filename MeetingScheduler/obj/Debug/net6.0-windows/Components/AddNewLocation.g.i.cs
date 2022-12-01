@@ -93,7 +93,7 @@ namespace MeetingScheduler.Components {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MeetingScheduler;component/components/addnewlocation.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MeetingScheduler;V1.0.0.0;component/components/addnewlocation.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Components\AddNewLocation.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
