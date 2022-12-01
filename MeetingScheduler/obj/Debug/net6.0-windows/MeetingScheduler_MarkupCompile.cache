@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\App.xaml
-2-1041721776
+3-1451736735
 
-10-1628619654
+11-988907035
 201-1451963523
-Components\UserRegister.xaml;MainWindow.xaml;
+Components\UserLogin.xaml;Components\UserRegister.xaml;MainWindow.xaml;
 
 False
 

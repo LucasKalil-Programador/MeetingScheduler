@@ -31,3 +31,5 @@ C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\n
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\UserRegister.baml
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\App.baml
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\UserLogin.g.cs
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\UserLogin.baml

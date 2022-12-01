@@ -24,5 +24,19 @@ namespace MeetingScheduler
             textBox.Background = validColor;
             return true;
         }
+
+        public static bool IsValidInput(this PasswordBox textBox, string regex, Brush validColor)
+        {
+            Regex regexp = new Regex(regex);
+
+            if (string.IsNullOrEmpty(textBox.Password.ToString()) || !string.IsNullOrEmpty(regexp.Replace(textBox.Password.ToString(), "", 1)))
+            {
+                textBox.Background = new SolidColorBrush(Color.FromRgb(255, 100, 100));
+                return false;
+            }
+            Console.WriteLine(regexp.Replace(textBox.Password.ToString(), "", 1));
+            textBox.Background = validColor;
+            return true;
+        }
     }
 }

@@ -30,6 +30,47 @@ namespace MeetingScheduler.Objects
             Name = name;
             Priority = priority;
         }
+
+
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Meeting meeting &&
+                   Id == meeting.Id &&
+                   StartDateTime == meeting.StartDateTime &&
+                   EndDateTime == meeting.EndDateTime &&
+                   EqualityComparer<Client[]>.Default.Equals(Participants, meeting.Participants) &&
+                   EqualityComparer<Location>.Default.Equals(Location, meeting.Location) &&
+                   Description == meeting.Description &&
+                   Subject == meeting.Subject &&
+                   Name == meeting.Name &&
+                   Priority == meeting.Priority;
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(Id);
+            hash.Add(StartDateTime);
+            hash.Add(EndDateTime);
+            hash.Add(Participants);
+            hash.Add(Location);
+            hash.Add(Description);
+            hash.Add(Subject);
+            hash.Add(Name);
+            hash.Add(Priority);
+            return hash.ToHashCode();
+        }
+
+        public static bool operator ==(Meeting left, Meeting right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Meeting left, Meeting right)
+        {
+            return !left.Equals(right);
+        }
     }
 
     public class MeetingFactory

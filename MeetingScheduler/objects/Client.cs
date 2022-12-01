@@ -1,4 +1,6 @@
-﻿namespace MeetingScheduler.Objects
+﻿using System;
+
+namespace MeetingScheduler.Objects
 {
     public struct Client
     {
@@ -17,6 +19,32 @@
             this.Phone = phone;
             this.Email = email;
             this.Office = office;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Client client &&
+                   Id == client.Id &&
+                   Name == client.Name &&
+                   Document == client.Document &&
+                   Phone == client.Phone &&
+                   Email == client.Email &&
+                   Office == client.Office;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, Document, Phone, Email, Office);
+        }
+
+        public static bool operator ==(Client left, Client right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Client left, Client right)
+        {
+            return !left.Equals(right);
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MeetingScheduler.Objects
 {
@@ -17,6 +18,31 @@ namespace MeetingScheduler.Objects
             this.StartDateTime = startDateTime;
             this.EndDateTime = endDateTime;
             this.Reason = reason;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Appointment appointment &&
+                   Id == appointment.Id &&
+                   EqualityComparer<Client>.Default.Equals(Client, appointment.Client) &&
+                   StartDateTime == appointment.StartDateTime &&
+                   EndDateTime == appointment.EndDateTime &&
+                   Reason == appointment.Reason;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Client, StartDateTime, EndDateTime, Reason);
+        }
+
+        public static bool operator ==(Appointment left, Appointment right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Appointment left, Appointment right)
+        {
+            return !left.Equals(right);
         }
     }
 

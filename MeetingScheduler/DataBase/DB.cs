@@ -32,10 +32,11 @@ namespace MeetingScheduler
         {
             lock (connection)
             {
-                if(ExistsClientByName(client.Name)) return false;
+                if (ExistsClientByName(client.Name)) return false;
                 string command =
                     "Insert into Client (name, password, document, phone, email, office) " +
                     $"values ('{client.Name}', '{password.GetHashCode()}', '{client.Document}', '{client.Phone}', '{client.Email}', '{client.Office}');";
+                Console.WriteLine(command);
                 MySqlCommand cmd = new(command, connection.Value);
                 int rows = cmd.ExecuteNonQuery();
                 return rows == 1;
@@ -47,25 +48,24 @@ namespace MeetingScheduler
             lock (connection)
             {
                 Client client = default;
-                lock (connection)
+                string command = $"select * from client where name='{name}' and password='{password.GetHashCode()}';";
+                Console.WriteLine(command);
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
                 {
-                    string command = $"select * from client where name = '{name}' and password = '{password.GetHashCode()}';";
-                    MySqlCommand cmd = new(command, connection.Value);
-                    MySqlDataReader Reader = cmd.ExecuteReader();
-                    while (Reader.Read())
-                    {
-                        client = new Clientfactory()
-                            .SetId(int.Parse(Reader.GetString(0)))
-                            .SetName(Reader.GetString(1))
-                            .SetDocument(Reader.GetString(3))
-                            .SetPhone(Reader.GetString(4))
-                            .SetEmail(Reader.GetString(5))
-                            .SetOffice(Reader.GetString(6))
-                            .Build();
-                    }
-                    Reader.Close();
-                    return client;
+                    client = new Clientfactory()
+                        .SetId(int.Parse(Reader.GetString(0)))
+                        .SetName(Reader.GetString(1))
+                        .SetDocument(Reader.GetString(3))
+                        .SetPhone(Reader.GetString(4))
+                        .SetEmail(Reader.GetString(5))
+                        .SetOffice(Reader.GetString(6))
+                        .Build();
                 }
+                Reader.Close();
+
+                return client;
             }
         }
 

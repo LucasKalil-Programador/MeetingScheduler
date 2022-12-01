@@ -12,18 +12,50 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MeetingScheduler.Objects;
 
 namespace MeetingScheduler
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly UserControl[] userControls;
+        
         public MainWindow()
         {
             InitializeComponent();
             Console.WriteLine("Banco de dados: " + DB.Ping());
+            userControls = GetControls();
+            ChangeControl(userLogin);
+
+            userRegister.OnRegisterNewClient += (c) => ChangeControl(userLogin);
+            userRegister.ReturnButton.Click += (s, a) => ChangeControl(userLogin);
+
+            userLogin.RegisterButton.Click += (s, a) => ChangeControl(userRegister);
+            userLogin.OnLogin += (c) => Console.WriteLine($"Logado com sucesso: ID={c.Id} Name={c.Name}");
+        }
+
+        public void ChangeControl(UserControl newControl)
+        {
+            newControl.Visibility = Visibility.Visible;
+            newControl.IsEnabled = true;
+            foreach (UserControl oldControl in userControls)
+            {
+                if(oldControl != newControl)
+                {
+                    oldControl.Visibility = Visibility.Hidden;
+                    oldControl.IsEnabled = false;
+                } 
+            }
+        }
+   
+        public UserControl[] GetControls()
+        {
+            List<UserControl> users = new();
+            foreach (var childrens in Panel.Children)
+            {
+                if (childrens is UserControl children) users.Add(children);
+            }
+            return users.ToArray();
         }
     }
 }

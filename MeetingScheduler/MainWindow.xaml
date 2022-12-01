@@ -7,7 +7,9 @@
         xmlns:MyComponents="clr-namespace:MeetingScheduler.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <MyComponents:UserRegister/>
+    
+    <Grid x:Name="Panel">
+        <MyComponents:UserRegister x:Name="userRegister" Visibility="Hidden"/>
+        <MyComponents:UserLogin    x:Name="userLogin" Visibility="Hidden"/>
     </Grid>
 </Window>

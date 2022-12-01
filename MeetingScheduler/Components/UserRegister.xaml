@@ -37,6 +37,15 @@
                 <Button Grid.Column="1" Content="Registar usuario" Click="OnRegisterButtonClick"/>
             </Grid>
 
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ReturnButton" Grid.Column="1" Content="Return to login"/>
+            </Grid>
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>

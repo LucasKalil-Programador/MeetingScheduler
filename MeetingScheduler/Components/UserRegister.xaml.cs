@@ -25,7 +25,7 @@ namespace MeetingScheduler.Components
     {
         private readonly Brush ValidColor;
 
-        public event Action<Client> ValidColorChanged = (c) => { };
+        public event Action<Client> OnRegisterNewClient = (c) => { };
 
         public UserRegister()
         {
@@ -52,7 +52,7 @@ namespace MeetingScheduler.Components
             ShowMessage(status);
             if (status)
             {
-                ValidColorChanged.Invoke(DB.SelectClientByNameAndPassword(NameTextBox.Text, PasswordTextBox.Text));
+                OnRegisterNewClient.Invoke(DB.SelectClientByNameAndPassword(NameTextBox.Text, PasswordTextBox.Text));
                 CleanTextBox();
             }
         }
@@ -61,7 +61,7 @@ namespace MeetingScheduler.Components
         {
             if (success)
             {
-                MessageBox.Show("Successfully registered user", "Success", MessageBoxButton.OK);
+                MessageBox.Show(App.Current.MainWindow, "Successfully registered user", "Success", MessageBoxButton.OK);
             }
             else
             {
@@ -71,7 +71,7 @@ namespace MeetingScheduler.Components
                     errorSTR += "\r\nuser name already exists";
                     NameTextBox.Background = new SolidColorBrush(Color.FromRgb(255, 100, 100));
                 }
-                MessageBox.Show(errorSTR, "error", MessageBoxButton.OK);
+                MessageBox.Show(App.Current.MainWindow, errorSTR, "error", MessageBoxButton.OK);
             }
         }
 
@@ -89,7 +89,7 @@ namespace MeetingScheduler.Components
         {
             return NameTextBox.IsValidInput(@"[a-zA-Z ]+", ValidColor) &
                    PasswordTextBox.IsValidInput(@"\w+", ValidColor) &
-                   PhoneTextBox.IsValidInput(@"\d{2} ?\d{5}-?\d{4}", ValidColor) &
+                   PhoneTextBox.IsValidInput(@"\d{2} ?\d{5}(-| )?\d{4}", ValidColor) &
                    EmailTextBox.IsValidInput(@"[\w]+(\.[\w]+)*\@\w+(\.[\w]+)+", ValidColor) &
                    OfficeTextBox.IsValidInput(@"[a-zA-Z ]+", ValidColor) &
                    DocumentTextBox.IsValidInput(@"(\d|-|\.)+|\d+", ValidColor);
