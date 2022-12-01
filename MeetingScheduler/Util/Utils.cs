@@ -13,7 +13,7 @@ namespace MeetingScheduler
     {
         public static bool IsValidInput(this TextBox textBox, string regex, Brush validColor)
         {
-            Regex regexp = new Regex(regex);
+            Regex regexp = new(regex);
                 
             if (string.IsNullOrEmpty(textBox.Text) || !string.IsNullOrEmpty(regexp.Replace(textBox.Text, "", 1)))
             {
@@ -27,7 +27,7 @@ namespace MeetingScheduler
 
         public static bool IsValidInput(this PasswordBox textBox, string regex, Brush validColor)
         {
-            Regex regexp = new Regex(regex);
+            Regex regexp = new(regex);
 
             if (string.IsNullOrEmpty(textBox.Password.ToString()) || !string.IsNullOrEmpty(regexp.Replace(textBox.Password.ToString(), "", 1)))
             {

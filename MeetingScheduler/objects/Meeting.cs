@@ -49,7 +49,7 @@ namespace MeetingScheduler.Objects
 
         public override int GetHashCode()
         {
-            HashCode hash = new HashCode();
+            HashCode hash = new();
             hash.Add(Id);
             hash.Add(StartDateTime);
             hash.Add(EndDateTime);
