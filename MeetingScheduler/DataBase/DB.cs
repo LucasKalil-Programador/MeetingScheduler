@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using MeetingScheduler.Objects;
 using MeetingScheduler;
+using System.Collections.Generic;
 
 namespace MeetingScheduler
 {
@@ -83,5 +84,47 @@ namespace MeetingScheduler
         }
 
         #endregion Client
+
+        #region Location
+
+        public static bool InsertLocation(Location location)
+        {
+            lock (connection)
+            {
+                string command =
+                    "Insert into Location (name, address, cep, capacity, room) " +
+                    $"values ('{location.Name}','{location.Address}','{location.Cep}', {location.Capacity},'{location.Room}');";
+                MySqlCommand cmd = new(command, connection.Value);
+                int rows = cmd.ExecuteNonQuery();
+                return rows == 1;
+            }
+        }
+
+        public static Location[] SelectAllLocations()
+        {
+            lock (connection)
+            {
+                List<Location> locations = new();
+                string command = $"select * from location;";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    locations.Add(new LocationFactory()
+                        .SetId(Reader.GetInt32(0))
+                        .SetName(Reader.GetString(1))
+                        .SetAddress(Reader.GetString(2))
+                        .SetCep(Reader.GetString(3))
+                        .SetCapacity(Reader.GetInt32(4))
+                        .SetRoom(Reader.GetString(5))
+                        .Build());
+                }
+                Reader.Close();
+
+                return locations.ToArray();
+            }
+        }
+
+        #endregion Location
     }
 }
