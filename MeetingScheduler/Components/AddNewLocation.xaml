@@ -9,15 +9,15 @@
     <ScrollViewer>
         <StackPanel>
             <TextBlock Text="Nome"/>
-            <TextBox x:Name="nameTextBox" HorizontalAlignment="Stretch" Margin="80, 10"/>
+            <TextBox x:Name="nameTextBox" HorizontalAlignment="Stretch" Margin="80, 10" HorizontalContentAlignment="Center"/>
             <TextBlock Text="Endereço"/>
-            <TextBox x:Name="addressTextBox" HorizontalAlignment="Stretch" Margin="80, 10"/>
+            <TextBox x:Name="addressTextBox" HorizontalAlignment="Stretch" Margin="80, 10" HorizontalContentAlignment="Center"/>
             <TextBlock Text="Cep"/>
-            <TextBox x:Name="cepTextBox" HorizontalAlignment="Stretch" Margin="80, 10"/>
+            <TextBox x:Name="cepTextBox" HorizontalAlignment="Stretch" Margin="80, 10" HorizontalContentAlignment="Center"/>
             <TextBlock Text="Capacidade (Somente numero)"/>
-            <TextBox x:Name="capacityTextBox" HorizontalAlignment="Stretch" Margin="80, 10"/>
+            <TextBox x:Name="capacityTextBox" HorizontalAlignment="Stretch" Margin="80, 10" HorizontalContentAlignment="Center"/>
             <TextBlock Text="Sala"/>
-            <TextBox x:Name="roomTextBox" HorizontalAlignment="Stretch" Margin="80, 10"/>
+            <TextBox x:Name="roomTextBox" HorizontalAlignment="Stretch" Margin="80, 10" HorizontalContentAlignment="Center"/>
             <Button Content="Criar local" Margin="80, 30" Click="CreateLocalButtonClick"/>
         </StackPanel>
     </ScrollViewer>
