@@ -88,7 +88,16 @@ namespace MeetingScheduler.Components
                     .SetName(nameTextBox.Text)
                     .SetPriority(priorityListBox.SelectedIndex)
                     .Build();
-                DB.InsertMeeting(meeting);
+                
+                if (DB.InsertMeeting(meeting))
+                {
+                    MessageBox.Show("Sucesso ao agendar reuniao", "Sucesso");
+                    Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao agendar reuniao", "Error");
+                }
             }
         }
 
@@ -139,9 +148,23 @@ namespace MeetingScheduler.Components
 
             return nameTextBox.IsValidInput(@"\w(\w| )+", validBrush) &
                 subjectTextBox.IsValidInput(@"\w(\w| )+", validBrush) &
-                string.IsNullOrWhiteSpace(descriptionTextBox.GetText()) &
+                !string.IsNullOrWhiteSpace(descriptionTextBox.GetText()) &
                 priorityListBox.SelectedItem != null &
                 locationValid && teamValid && dateValid;
+        }
+
+        private void Clear()
+        {
+            priorityListBox.SelectedIndex = 1;
+            nameTextBox.Clear();
+            subjectTextBox.Clear();
+            descriptionTextBox.Document.Blocks.Clear();
+            clients = Array.Empty<Client>();
+            location = default;
+            dateTime = default;
+            localRequest = new();
+            dateRequest = new();
+            teamRequest = new(Array.Empty<Client>());
         }
     }
 }

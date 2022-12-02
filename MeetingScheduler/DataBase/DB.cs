@@ -166,8 +166,53 @@ namespace MeetingScheduler
                     $"'{meeting.Name}', {meeting.Priority});";
                 MySqlCommand cmd = new(command, connection.Value);
                 int rows = cmd.ExecuteNonQuery();
+            }
+
+
+            int id = SelectIdFromMeeting(meeting);
+            if (id != -1)
+            {
+                foreach (var client in meeting.Participants)
+                {
+                    InsertMeetingHasClient(id, client.Id);
+                }
+            }
+            return id != -1;
+        }
+
+        public static bool InsertMeetingHasClient(int meetingId, int clientId)
+        {
+            lock (connection)
+            {
+                string command = $"Insert Into client_has_meeting (Client, Meeting) values ({clientId}, {meetingId})";
+                MySqlCommand cmd = new(command, connection.Value);
+                int rows = cmd.ExecuteNonQuery();
                 return rows == 1;
             }
+        }
+
+        public static int SelectIdFromMeeting(Meeting meeting)
+        {
+            int id = -1;
+            lock (connection)
+            {
+                string command = $"Select idmeeting from meeting where " +
+                    $"start_date_time='{meeting.StartDateTime.ToMySQLDateTimeFormat()}' and " +
+                    $"end_date_time='{meeting.EndDateTime.ToMySQLDateTimeFormat()}' and " +
+                    $"Location={meeting.Location.Id} and " +
+                    $"description='{meeting.Description}' and " +
+                    $"subject='{meeting.Subject}' and " +
+                    $"name='{meeting.Name}' and " +
+                    $"priority={meeting.Priority};";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32("idmeeting");
+                }
+                reader.Close();
+            }
+            return id;
         }
 
         #endregion Meeting
