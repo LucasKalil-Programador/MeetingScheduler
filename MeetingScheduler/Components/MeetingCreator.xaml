@@ -38,27 +38,6 @@
                 <RichTextBox x:Name="descriptionTextBox" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Grid>
 
-
-            <TextBlock Text="Selecione um local" Margin="0,20,0,0"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="locationButton" Grid.Column="1" Content="Adionar local"/>
-            </Grid>
-
-            <TextBlock Text="Selecione um horario" Margin="0,20,0,0"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="dateTimeButton" Content="Abrir calendario" Grid.Column="1" Click="OnDateTimeButtonClick"/>
-            </Grid>
-            
             <TextBlock Text="Prioridade" Margin="0,20,0,0"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -73,7 +52,44 @@
                 </ComboBox>
             </Grid>
 
-            
+            <TextBlock Text="Selecione um local" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="locationButton" Grid.Column="1" Content="Adionar local"/>
+            </Grid>
+
+            <TextBlock Text="Selecione os participantes" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="usersButton" Content="Abrir tabela dos participantes" Grid.Column="1" Click="OnUsersButtonClick"/>
+            </Grid>
+
+            <TextBlock Text="Selecione um horario" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="dateTimeButton" Content="Abrir calendario" Grid.Column="1" Click="OnDateTimeButtonClick" IsEnabled="False"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Criar Reuniao" Grid.Column="1"/>
+            </Grid>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

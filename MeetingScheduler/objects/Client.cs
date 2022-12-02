@@ -4,12 +4,12 @@ namespace MeetingScheduler.Objects
 {
     public struct Client
     {
-        public readonly int Id;
-        public readonly string Name;
-        public readonly string Document;
-        public readonly string Phone;
-        public readonly string Email;
-        public readonly string Office;
+        public readonly int Id { get; }
+        public readonly string Name { get; }
+        public readonly string Document { get; }
+        public readonly string Phone { get; }
+        public readonly string Email { get; }
+        public readonly string Office { get; }
 
         public Client(int id, string name, string document, string phone, string email, string office)
         {

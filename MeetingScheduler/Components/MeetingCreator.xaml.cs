@@ -22,6 +22,9 @@ namespace MeetingScheduler.Components
     {
         private LocationUserRequest localRequest = new();
         private DateTimeUserRequest dateRequest = new();
+        private TeamUserRequest teamRequest = new(Array.Empty<Client>());
+
+        private Client[] clients = Array.Empty<Client>();
         private Location location = default;
         private DateTime dateTime = default;
 
@@ -29,17 +32,6 @@ namespace MeetingScheduler.Components
         {
             InitializeComponent();
             locationButton.Click += (s, a) => OnLocationButtonClick();
-            IsEnabledChanged += (s, a) => OnEnabledChange();
-        }
-
-        public void OnEnabledChange()
-        {
-            if (IsEnabled)
-            {
-                localRequest = new();
-                dateRequest = new();
-                locationButton.Content = "Adionar local";
-            }
         }
 
         public void OnLocationButtonClick()
@@ -51,6 +43,8 @@ namespace MeetingScheduler.Components
                 locationButton.Content = $"Local: {location.Name} Sala: {location.Room}";
             }
             localRequest = new();
+            dateTime = default;
+            dateTimeButton.IsEnabled = location != default && clients.Length > 0;
         }
 
         private void OnDateTimeButtonClick(object sender, RoutedEventArgs e)
@@ -59,9 +53,22 @@ namespace MeetingScheduler.Components
             if(dateRequest.resultDateTime != default)
             {
                 dateTime = dateRequest.resultDateTime;
-                dateTimeButton.Content = $"Data selecionada: {dateTime.ToString()}";
+                dateTimeButton.Content = $"Data selecionada: {dateTime}";
             }
             dateRequest = new();
+        }
+
+        private void OnUsersButtonClick(object sender, RoutedEventArgs e)
+        {
+            teamRequest.ShowDialog();
+            if(teamRequest.resultClients.Length > 0)
+            {
+                clients = teamRequest.resultClients;
+                usersButton.Content = $"{clients.Length} usuarios selecionados";
+            }
+            teamRequest = new(clients);
+            dateTime = default;
+            dateTimeButton.IsEnabled = location != default && clients.Length > 0;
         }
     }
 }

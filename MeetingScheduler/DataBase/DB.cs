@@ -69,6 +69,31 @@ namespace MeetingScheduler
             }
         }
 
+        public static Client[] SelectAllClients()
+        {
+            lock (connection)
+            {
+                List<Client> clients = new List<Client>();
+                string command = $"select * from client;";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    clients.Add(new Clientfactory()
+                        .SetId(int.Parse(Reader.GetString(0)))
+                        .SetName(Reader.GetString(1))
+                        .SetDocument(Reader.GetString(3))
+                        .SetPhone(Reader.GetString(4))
+                        .SetEmail(Reader.GetString(5))
+                        .SetOffice(Reader.GetString(6))
+                        .Build());
+                }
+                Reader.Close();
+
+                return clients.ToArray();
+            }
+        }
+
         public static bool ExistsClientByName(string name)
         {
             lock (connection)
