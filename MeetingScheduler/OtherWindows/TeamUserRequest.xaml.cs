@@ -20,8 +20,8 @@ namespace MeetingScheduler.OtherWindows
     {
         public Client[] resultClients = Array.Empty<Client>();
 
-        private List<Client> NonSelectedClients = new List<Client>();
-        private List<Client> SelectedClients = new List<Client>();
+        private List<Client> NonSelectedClients = new();
+        private List<Client> SelectedClients = new();
 
         public TeamUserRequest(Client[] clients)
         {

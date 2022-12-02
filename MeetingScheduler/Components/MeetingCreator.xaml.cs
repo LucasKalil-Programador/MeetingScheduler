@@ -28,16 +28,19 @@ namespace MeetingScheduler.Components
         private Location location = default;
         private DateTime dateTime = default;
 
+        private Brush validBrush;
+
         public MeetingCreator()
         {
             InitializeComponent();
             locationButton.Click += (s, a) => OnLocationButtonClick();
+            validBrush = nameTextBox.Background;
         }
 
         public void OnLocationButtonClick()
         {
             localRequest.ShowDialog();
-            if(localRequest.ResultLocation != default)
+            if (localRequest.ResultLocation != default)
             {
                 location = localRequest.ResultLocation;
                 locationButton.Content = $"Local: {location.Name} Sala: {location.Room}";
@@ -50,7 +53,7 @@ namespace MeetingScheduler.Components
         private void OnDateTimeButtonClick(object sender, RoutedEventArgs e)
         {
             dateRequest.ShowDialog();
-            if(dateRequest.resultDateTime != default)
+            if (dateRequest.resultDateTime != default)
             {
                 dateTime = dateRequest.resultDateTime;
                 dateTimeButton.Content = $"Data selecionada: {dateTime}";
@@ -61,7 +64,7 @@ namespace MeetingScheduler.Components
         private void OnUsersButtonClick(object sender, RoutedEventArgs e)
         {
             teamRequest.ShowDialog();
-            if(teamRequest.resultClients.Length > 0)
+            if (teamRequest.resultClients.Length > 0)
             {
                 clients = teamRequest.resultClients;
                 usersButton.Content = $"{clients.Length} usuarios selecionados";
@@ -69,6 +72,76 @@ namespace MeetingScheduler.Components
             teamRequest = new(clients);
             dateTime = default;
             dateTimeButton.IsEnabled = location != default && clients.Length > 0;
+        }
+
+        private void OnCreateButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (IsValidData())
+            {
+                Meeting meeting = new MeetingFactory()
+                    .SetStartDateTime(dateTime)
+                    .SetEndDateTime(dateTime.AddHours(1))
+                    .SetParticipants(clients)
+                    .SetLocation(location)
+                    .SetDescription(descriptionTextBox.GetText().Trim())
+                    .SetSubject(subjectTextBox.Text)
+                    .SetName(nameTextBox.Text)
+                    .SetPriority(priorityListBox.SelectedIndex)
+                    .Build();
+                DB.InsertMeeting(meeting);
+            }
+        }
+
+        private bool IsValidData()
+        {
+            Brush errorColor = new SolidColorBrush(Color.FromRgb(255, 100, 100));
+            bool locationValid = true;
+            if (location == default)
+            {
+                locationButton.Background = errorColor;
+                locationValid = false;
+            }
+            else
+            {
+                locationButton.Background = validBrush;
+            }
+
+            bool teamValid = true;
+            if (clients.Length == 0)
+            {
+                usersButton.Background = errorColor;
+                teamValid = false;
+            }
+            else
+            {
+                usersButton.Background = validBrush;
+            }
+
+            bool dateValid = true;
+            if (dateTime == default)
+            {
+                dateTimeButton.Background = errorColor;
+                dateValid = false;
+            }
+            else
+            {
+                dateTimeButton.Background = validBrush;
+            }
+
+            if (string.IsNullOrWhiteSpace(descriptionTextBox.GetText()))
+            {
+                descriptionTextBox.Background = errorColor;
+            }
+            else
+            {
+                descriptionTextBox.Background = validBrush;
+            }
+
+            return nameTextBox.IsValidInput(@"\w(\w| )+", validBrush) &
+                subjectTextBox.IsValidInput(@"\w(\w| )+", validBrush) &
+                string.IsNullOrWhiteSpace(descriptionTextBox.GetText()) &
+                priorityListBox.SelectedItem != null &
+                locationValid && teamValid && dateValid;
         }
     }
 }

@@ -46,9 +46,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ComboBox x:Name="priorityListBox" Grid.Column="1">
-                    <ComboBoxItem Content="Urgente"/>
-                    <ComboBoxItem Content="Normal" IsSelected="True"/>
                     <ComboBoxItem Content="Baixo"/>
+                    <ComboBoxItem Content="Normal" IsSelected="True"/>
+                    <ComboBoxItem Content="Urgente"/>
                 </ComboBox>
             </Grid>
 
@@ -82,13 +82,13 @@
                 <Button x:Name="dateTimeButton" Content="Abrir calendario" Grid.Column="1" Click="OnDateTimeButtonClick" IsEnabled="False"/>
             </Grid>
 
-            <Grid>
+            <Grid Margin="0,25,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Criar Reuniao" Grid.Column="1"/>
+                <Button Content="Criar Reuniao" Grid.Column="1" Click="OnCreateButtonClick"/>
             </Grid>
         </StackPanel>
     </ScrollViewer>

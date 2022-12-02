@@ -73,7 +73,7 @@ namespace MeetingScheduler
         {
             lock (connection)
             {
-                List<Client> clients = new List<Client>();
+                List<Client> clients = new();
                 string command = $"select * from client;";
                 MySqlCommand cmd = new(command, connection.Value);
                 MySqlDataReader Reader = cmd.ExecuteReader();
@@ -151,5 +151,25 @@ namespace MeetingScheduler
         }
 
         #endregion Location
+
+        #region Meeting
+
+        public static bool InsertMeeting(Meeting meeting)
+        {
+            lock (connection)
+            {
+                string command = "Insert Into Meeting " +
+                    "(start_date_time, end_date_time, Location, description, subject, name, priority)" +
+                    $"values ('{meeting.StartDateTime.ToMySQLDateTimeFormat()}', " +
+                    $"'{meeting.EndDateTime.ToMySQLDateTimeFormat()}', " +
+                    $"{meeting.Location.Id}, '{meeting.Description}', '{meeting.Subject}', " +
+                    $"'{meeting.Name}', {meeting.Priority});";
+                MySqlCommand cmd = new(command, connection.Value);
+                int rows = cmd.ExecuteNonQuery();
+                return rows == 1;
+            }
+        }
+
+        #endregion Meeting
     }
 }
