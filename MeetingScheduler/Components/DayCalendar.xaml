@@ -39,7 +39,6 @@
                 <Button Content="21:00" Margin="5"/>
                 <Button Content="22:00" Margin="5"/>
                 <Button Content="23:00" Margin="5"/>
-                <Button Content="24:00" Margin="5"/>
             </StackPanel>
         </ScrollViewer>
         <Grid>

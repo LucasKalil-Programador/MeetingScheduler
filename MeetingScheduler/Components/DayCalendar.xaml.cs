@@ -45,7 +45,23 @@ namespace MeetingScheduler.Components
 
         public void SetDate(DateTime date)
         {
+            foreach (var control in stackPanel.Children)
+            {
+                if (control is Button button)
+                {
+                    string time = (string)button.Content;
+                    string[] timeSplited = time.Split(":");
+                    int hour = int.Parse(timeSplited[0]);
+                    int minute = int.Parse(timeSplited[1]);
 
+                    DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, hour, minute, 0);
+                    Console.WriteLine(dateTime + " " + DateTime.Now);
+                    if(dateTime < DateTime.Now)
+                    {
+                        button.IsEnabled = false;
+                    }
+                }
+            }
         }
     }
 }

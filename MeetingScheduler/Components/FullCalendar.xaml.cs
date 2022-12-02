@@ -26,7 +26,7 @@ namespace MeetingScheduler.Components
         private int year = 1;
         private int day = 1;
 
-        public Action<DateTime> OnDateClick = (date) => { };
+        public Action<DateTime> OnDateClick = (date) => { Console.WriteLine(date); };
 
         public FullCalendar()
         {
@@ -80,7 +80,7 @@ namespace MeetingScheduler.Components
         {
             string[] timeSplited = time.Split(":");
             hour = int.Parse(timeSplited[0]);
-            minute = int.Parse(timeSplited[0]);
+            minute = int.Parse(timeSplited[1]);
 
             DateTime dateTime = new DateTime(year, month, day, hour, minute, 0);
             OnDateClick.Invoke(dateTime);

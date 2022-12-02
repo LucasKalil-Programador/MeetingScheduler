@@ -77,7 +77,7 @@ namespace MeetingScheduler.Components
                     if (i <= VisibleDays)
                     {
                         button.Visibility = Visibility.Visible;
-                        button.IsEnabled = new DateTime(year, month, i) > DateTime.Now;
+                        button.IsEnabled = new DateTime(year, month, i, 23, 59, 59) > DateTime.Now;
                     }
                     else
                     {
