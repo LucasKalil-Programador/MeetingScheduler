@@ -82,7 +82,7 @@ namespace MeetingScheduler.Components
             hour = int.Parse(timeSplited[0]);
             minute = int.Parse(timeSplited[1]);
 
-            DateTime dateTime = new DateTime(year, month, day, hour, minute, 0);
+            DateTime dateTime = new(year, month, day, hour, minute, 0);
             OnDateClick.Invoke(dateTime);
         }
 

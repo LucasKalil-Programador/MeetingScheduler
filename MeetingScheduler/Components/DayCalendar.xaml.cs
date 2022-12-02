@@ -54,7 +54,7 @@ namespace MeetingScheduler.Components
                     int hour = int.Parse(timeSplited[0]);
                     int minute = int.Parse(timeSplited[1]);
 
-                    DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, hour, minute, 0);
+                    DateTime dateTime = new(date.Year, date.Month, date.Day, hour, minute, 0);
                     Console.WriteLine(dateTime + " " + DateTime.Now);
                     if(dateTime < DateTime.Now)
                     {
