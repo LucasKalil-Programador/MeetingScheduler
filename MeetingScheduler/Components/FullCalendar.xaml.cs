@@ -26,7 +26,7 @@ namespace MeetingScheduler.Components
         private int year = 1;
         private int day = 1;
 
-        public Action<DateTime> OnDateClick = (date) => { Console.WriteLine(date); };
+        public Action<DateTime> OnDateClick = (date) => { };
 
         public FullCalendar()
         {

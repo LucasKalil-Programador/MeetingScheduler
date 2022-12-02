@@ -55,7 +55,6 @@ namespace MeetingScheduler.Components
                     int minute = int.Parse(timeSplited[1]);
 
                     DateTime dateTime = new(date.Year, date.Month, date.Day, hour, minute, 0);
-                    Console.WriteLine(dateTime + " " + DateTime.Now);
                     if(dateTime < DateTime.Now)
                     {
                         button.IsEnabled = false;

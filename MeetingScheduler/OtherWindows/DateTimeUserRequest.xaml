@@ -1,0 +1,13 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MeetingScheduler.OtherWindows"
+        xmlns:Components="clr-namespace:MeetingScheduler.Components" x:Class="MeetingScheduler.OtherWindows.DateTimeUserRequest"
+        mc:Ignorable="d"
+        Title="DateTimeUserRequest" Height="400" Width="480">
+    <Grid>
+        <Components:FullCalendar x:Name="calendar"/>
+    </Grid>
+</Window>

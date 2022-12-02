@@ -6,36 +6,74 @@
              xmlns:local="clr-namespace:MeetingScheduler.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="Titulo da reuniao"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-        </Grid>
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Text="Titulo da reuniao" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+            </Grid>
 
-        <TextBlock Text="Assunto"/>
-        <Grid>
-            <Grid.ColumnDefinitions>    
-                <ColumnDefinition/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-        </Grid>
+            <TextBlock Text="Assunto" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="subjectTextBox" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+            </Grid>
 
-        <TextBlock Text="Selecione um local"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="locationButton" Grid.Column="1" Content="Adionar local"/>
-        </Grid>
-        
-    </StackPanel>
+            <TextBlock Text="Descriçao da reunião" Margin="0,20,0,0"/>
+            <Grid Height="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <RichTextBox x:Name="descriptionTextBox" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Grid>
+
+
+            <TextBlock Text="Selecione um local" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="locationButton" Grid.Column="1" Content="Adionar local"/>
+            </Grid>
+
+            <TextBlock Text="Selecione um horario" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="dateTimeButton" Content="Abrir calendario" Grid.Column="1" Click="OnDateTimeButtonClick"/>
+            </Grid>
+            
+            <TextBlock Text="Prioridade" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="priorityListBox" Grid.Column="1">
+                    <ComboBoxItem Content="Urgente"/>
+                    <ComboBoxItem Content="Normal" IsSelected="True"/>
+                    <ComboBoxItem Content="Baixo"/>
+                </ComboBox>
+            </Grid>
+
+            
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

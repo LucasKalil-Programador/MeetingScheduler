@@ -31,6 +31,9 @@
     <Compile Update="Components\UserRegister.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="OtherWindows\DateTimeUserRequest.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="OtherWindows\LocationUserRequest.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="OtherWindows\DateTimeUserRequest.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="OtherWindows\LocationUserRequest.xaml">

@@ -20,8 +20,10 @@ namespace MeetingScheduler.Components
 {
     public partial class MeetingCreator : UserControl
     {
-        private LocationUserRequest request = new();
+        private LocationUserRequest localRequest = new();
+        private DateTimeUserRequest dateRequest = new();
         private Location location = default;
+        private DateTime dateTime = default;
 
         public MeetingCreator()
         {
@@ -34,20 +36,32 @@ namespace MeetingScheduler.Components
         {
             if (IsEnabled)
             {
-                request = new();
+                localRequest = new();
+                dateRequest = new();
                 locationButton.Content = "Adionar local";
             }
         }
 
         public void OnLocationButtonClick()
         {
-            request.ShowDialog();
-            if(request.ResultLocation != default)
+            localRequest.ShowDialog();
+            if(localRequest.ResultLocation != default)
             {
-                location = request.ResultLocation;
+                location = localRequest.ResultLocation;
                 locationButton.Content = $"Local: {location.Name} Sala: {location.Room}";
             }
-            request = new();
+            localRequest = new();
+        }
+
+        private void OnDateTimeButtonClick(object sender, RoutedEventArgs e)
+        {
+            dateRequest.ShowDialog();
+            if(dateRequest.resultDateTime != default)
+            {
+                dateTime = dateRequest.resultDateTime;
+                dateTimeButton.Content = $"Data selecionada: {dateTime.ToString()}";
+            }
+            dateRequest = new();
         }
     }
 }
