@@ -24,5 +24,6 @@
         </Grid>
 
         <local:MeetingCreator x:Name="meetingCreator" Grid.Row="1" Visibility="Hidden" IsEnabled="False"/>
+        <local:FullCalendar x:Name="calendar" Grid.Row="1" Visibility="Hidden" IsEnabled="False"/>
     </Grid>
 </UserControl>

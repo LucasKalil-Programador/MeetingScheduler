@@ -24,12 +24,12 @@ namespace MeetingScheduler.Components
         public int Year { get; private set; }
         public int Month { get; private set; }
 
-        public Action<Button, int> OnDayClick = (button, day) => { };
+        public Action<int> OnDayClick = (day) => { }; 
 
         public MonthCalendar()
         {
             InitializeComponent();
-            for(int i = 0; i < grid.Children.Count; i++)
+            for(int i = 0; i < monthGrid.Children.Count; i++)
             {
                 Button? button = GetButtonDay(i);
                 if(button != null)
@@ -37,7 +37,7 @@ namespace MeetingScheduler.Components
                     int day = i;
                     button.Tag = day;
                     button.Content = day.ToString();
-                    button.Click += (s, a) => OnDayClick(button, day);      
+                    button.Click += (s, a) => OnDayClick.Invoke(day);
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace MeetingScheduler.Components
         public Button? GetButtonDay(int day)
         {
             day--;
-            foreach (FrameworkElement control in grid.Children)
+            foreach (FrameworkElement control in monthGrid.Children)
             {
                 if (control is Button button)
                 {
@@ -69,7 +69,7 @@ namespace MeetingScheduler.Components
             Year = year;
             Month = month;
             VisibleDays = DateTime.DaysInMonth(year, month); 
-            for (int i = 0; i < grid.Children.Count; i++)
+            for (int i = 0; i < monthGrid.Children.Count; i++)
             {
                 Button? button = GetButtonDay(i);
                 if (button != null)

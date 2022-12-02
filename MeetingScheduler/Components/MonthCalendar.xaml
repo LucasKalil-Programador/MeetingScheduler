@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:MeetingScheduler.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="grid">
+    <Grid>
+        <Grid x:Name="monthGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -73,5 +74,6 @@
         <Button Grid.Column="4" Grid.Row="5" Margin="5"/>
         <Button Grid.Column="5" Grid.Row="5" Margin="5"/>
         <Button Grid.Column="6" Grid.Row="5" Margin="5"/>
+    </Grid>
     </Grid>
 </UserControl>

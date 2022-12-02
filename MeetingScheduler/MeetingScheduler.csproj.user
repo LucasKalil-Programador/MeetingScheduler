@@ -10,6 +10,9 @@
     <Compile Update="Components\AddNewLocation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\DayCalendar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\FullCalendar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Components\AddNewLocation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\DayCalendar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\FullCalendar.xaml">

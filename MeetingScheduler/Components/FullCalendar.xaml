@@ -7,29 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="monthGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="1" Background="Transparent"  HorizontalAlignment="Right" BorderThickness="0" Click="PreviousButtonClick" >
-            <Image Source="/ImageResources/left-arrow.png" Margin="10"/>
-        </Button>
+            <Button Grid.Column="1" Background="Transparent"  HorizontalAlignment="Right" BorderThickness="0" Click="PreviousButtonClick" >
+                <Image Source="/ImageResources/left-arrow.png" Margin="10"/>
+            </Button>
 
-        <TextBlock x:Name="dateTextBlock" Grid.Column="2" Text="4/2022" FontSize="30"/>
+            <TextBlock x:Name="dateTextBlock" Grid.Column="2" Text="4/2022" FontSize="30"/>
 
-        <Button Grid.Column="3" Background="Transparent" HorizontalAlignment="Left" BorderThickness="0" Click="NextMonthClick" >
-            <Image Source="/ImageResources/right-arrow.png" Margin="10"/>
-        </Button>
+            <Button Grid.Column="3" Background="Transparent" HorizontalAlignment="Left" BorderThickness="0" Click="NextMonthClick" >
+                <Image Source="/ImageResources/right-arrow.png" Margin="10"/>
+            </Button>
 
-        <local:MonthCalendar x:Name="monthCalendar" Grid.Row="1" Grid.ColumnSpan="5"/>
+            <local:MonthCalendar x:Name="monthCalendar" Grid.Row="1" Grid.ColumnSpan="5"/>
+        </Grid>
+
+        <Grid x:Name="dayGrid" Visibility="Hidden" IsEnabled="False">
+            <local:DayCalendar x:Name="dayCalendar"/>
+        </Grid>
     </Grid>
 </UserControl>
