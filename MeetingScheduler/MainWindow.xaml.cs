@@ -1,27 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MeetingScheduler.Objects;
 
 namespace MeetingScheduler
 {
     public partial class MainWindow : Window
     {
         private readonly UserControl[] userControls;
-        
+
         public MainWindow()
-        {
+        {         
             InitializeComponent();
             Console.WriteLine("Banco de dados: " + DB.Ping());
             userControls = GetControls();
@@ -41,14 +31,14 @@ namespace MeetingScheduler
             newControl.IsEnabled = true;
             foreach (UserControl oldControl in userControls)
             {
-                if(oldControl != newControl)
+                if (oldControl != newControl)
                 {
                     oldControl.Visibility = Visibility.Hidden;
                     oldControl.IsEnabled = false;
-                } 
+                }
             }
         }
-   
+
         public UserControl[] GetControls()
         {
             List<UserControl> users = new();

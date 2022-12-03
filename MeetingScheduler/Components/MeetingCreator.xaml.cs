@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using MeetingScheduler.Objects;
+using MeetingScheduler.OtherWindows;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MeetingScheduler.OtherWindows;
-using MeetingScheduler.Objects;
 
 namespace MeetingScheduler.Components
 {
@@ -48,6 +37,7 @@ namespace MeetingScheduler.Components
             localRequest = new();
             dateTime = default;
             dateTimeButton.IsEnabled = location != default && clients.Length > 0;
+            dateTimeButton.Content = $"Selecione uma data";
         }
 
         private void OnDateTimeButtonClick(object sender, RoutedEventArgs e)
@@ -73,6 +63,7 @@ namespace MeetingScheduler.Components
             teamRequest = new(clients);
             dateTime = default;
             dateTimeButton.IsEnabled = location != default && clients.Length > 0;
+            dateTimeButton.Content = $"Selecione uma data";
         }
 
         private void OnCreateButtonClick(object sender, RoutedEventArgs e)
@@ -89,7 +80,7 @@ namespace MeetingScheduler.Components
                     .SetName(nameTextBox.Text)
                     .SetPriority(priorityListBox.SelectedIndex)
                     .Build();
-                
+
                 if (DB.InsertMeeting(meeting))
                 {
                     MessageBox.Show("Sucesso ao agendar reuniao", "Sucesso");
@@ -166,6 +157,9 @@ namespace MeetingScheduler.Components
             localRequest = new();
             dateRequest = new();
             teamRequest = new(Array.Empty<Client>());
+            dateTimeButton.Content = $"Selecione uma data";
+            usersButton.Content = $"Selecione os participantes";
+            locationButton.Content = $"Selecione o local da reunião";
         }
     }
 }

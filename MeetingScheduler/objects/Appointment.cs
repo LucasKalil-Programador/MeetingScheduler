@@ -94,7 +94,7 @@ namespace MeetingScheduler.Objects
             this.Reason = reason;
             return this;
         }
-    
+
 
     }
 }

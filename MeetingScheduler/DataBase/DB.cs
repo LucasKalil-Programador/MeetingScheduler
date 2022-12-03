@@ -1,8 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MeetingScheduler.Objects;
+using MySql.Data.MySqlClient;
 using System;
-using System.Data;
-using MeetingScheduler.Objects;
-using MeetingScheduler;
 using System.Collections.Generic;
 
 namespace MeetingScheduler
@@ -283,7 +281,7 @@ namespace MeetingScheduler
                         .SetPriority(reader.GetInt32(7));
                     locationID = reader.GetInt32(3);
                 }
-                reader.Close();        
+                reader.Close();
             }
             factory.SetLocation(SelectAllLocationsWhereID(locationID));
 

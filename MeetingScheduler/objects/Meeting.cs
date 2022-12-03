@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeetingScheduler.Objects
 {
@@ -89,17 +86,17 @@ namespace MeetingScheduler.Objects
 
         public bool IsValid()
         {
-            return Id != -1 && 
-                   StartDateTime != default && 
-                   EndDateTime != default && 
+            return Id != -1 &&
+                   StartDateTime != default &&
+                   EndDateTime != default &&
                    Participants.Length != 0 &&
-                   Location.HasValue && 
+                   Location.HasValue &&
                    Description != string.Empty &&
                    Subject != string.Empty &&
                    Name != string.Empty &&
-                   Priority  != -1;
+                   Priority != -1;
         }
-    
+
         public MeetingFactory SetId(int id)
         {
             this.Id = id;

@@ -61,11 +61,11 @@ namespace MeetingScheduler.Objects
 
         public bool IsValid()
         {
-            return Id != -1 && 
-                   Name != string.Empty && 
-                   Address != string.Empty && 
-                   Cep != string.Empty && 
-                   Capacity != -1 && 
+            return Id != -1 &&
+                   Name != string.Empty &&
+                   Address != string.Empty &&
+                   Cep != string.Empty &&
+                   Capacity != -1 &&
                    Room != string.Empty;
         }
 

@@ -1,18 +1,8 @@
 ﻿using MeetingScheduler.Objects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MeetingScheduler.Components
 {
@@ -31,14 +21,14 @@ namespace MeetingScheduler.Components
 
         private void OnLoginButtonClick(object sender, RoutedEventArgs e)
         {
-            if(!(UserNameTextBox.IsValidInput(@"[a-zA-Z ]+", ValidColor) &
+            if (!(UserNameTextBox.IsValidInput(@"[a-zA-Z ]+", ValidColor) &
                 PasswordTextBox.IsValidInput(@"\w+", ValidColor)))
             {
                 return;
             }
             string userName = UserNameTextBox.Text;
             string password = PasswordTextBox.Password.ToString();
-            
+
             Client client = DB.SelectClientByNameAndPassword(userName, password);
             if (client != default)
             {

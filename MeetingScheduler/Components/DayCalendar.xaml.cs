@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MeetingScheduler.Objects;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MeetingScheduler.Objects;
 
 namespace MeetingScheduler.Components
 {
@@ -100,7 +90,7 @@ namespace MeetingScheduler.Components
                         foreach (var client in clients)
                         {
                             button.Background = DB.ClientIsOcupedAtDate(client, dateTime) ?
-                                (button.Background == Brushes.Yellow ? Brushes.Purple : Brushes.Blue) : 
+                                (button.Background == Brushes.Yellow ? Brushes.Purple : Brushes.Blue) :
                                 (button.Background == Brushes.Yellow ? Brushes.Yellow : NormalButtonBackGround);
                         }
                     }

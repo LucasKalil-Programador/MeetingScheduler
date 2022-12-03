@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MeetingScheduler.Components
 {
@@ -24,15 +13,15 @@ namespace MeetingScheduler.Components
         public int Year { get; private set; }
         public int Month { get; private set; }
 
-        public Action<int> OnDayClick = (day) => { }; 
+        public Action<int> OnDayClick = (day) => { };
 
         public MonthCalendar()
         {
             InitializeComponent();
-            for(int i = 0; i < monthGrid.Children.Count; i++)
+            for (int i = 0; i < monthGrid.Children.Count; i++)
             {
                 Button? button = GetButtonDay(i);
-                if(button != null)
+                if (button != null)
                 {
                     int day = i;
                     button.Tag = day;
@@ -68,7 +57,7 @@ namespace MeetingScheduler.Components
         {
             Year = year;
             Month = month;
-            VisibleDays = DateTime.DaysInMonth(year, month); 
+            VisibleDays = DateTime.DaysInMonth(year, month);
             for (int i = 0; i < monthGrid.Children.Count; i++)
             {
                 Button? button = GetButtonDay(i);

@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MeetingScheduler.Objects;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MeetingScheduler.Objects;
 
 namespace MeetingScheduler.OtherWindows
 {
@@ -29,7 +18,7 @@ namespace MeetingScheduler.OtherWindows
 
         private void OnVisibleChange()
         {
-            if (IsVisible) UpdateDataGrid();  
+            if (IsVisible) UpdateDataGrid();
         }
 
         private void ChangeButtonClick(object sender, EventArgs args)
@@ -52,7 +41,7 @@ namespace MeetingScheduler.OtherWindows
                 changeButton.Content = "Adicionar novo local";
             }
         }
-    
+
         private void UpdateDataGrid()
         {
             locations = DB.SelectAllLocations();

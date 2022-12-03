@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Security.Cryptography;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace MeetingScheduler
 {
@@ -64,7 +61,7 @@ namespace MeetingScheduler
         {
             return new TextRange(r.Document.ContentStart, r.Document.ContentEnd).Text;
         }
-    
+
         public static string ToMySQLDateTimeFormat(this DateTime dateTime)
         {
             return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
