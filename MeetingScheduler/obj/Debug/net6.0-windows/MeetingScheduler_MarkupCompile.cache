@@ -16,5 +16,5 @@ C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\App.xaml
 201-1451963523
 Components\AddNewLocation.xaml;Components\DayCalendar.xaml;Components\FullCalendar.xaml;Components\MeetingCreator.xaml;Components\MeetingDetails.xaml;Components\MonthCalendar.xaml;Components\UserHome.xaml;Components\UserLogin.xaml;Components\UserRegister.xaml;MainWindow.xaml;OtherWindows\DateTimeUserRequest.xaml;OtherWindows\LocationUserRequest.xaml;OtherWindows\TeamUserRequest.xaml;
 
-False
+True
 

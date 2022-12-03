@@ -28,6 +28,7 @@ namespace MeetingScheduler.Components
         private int day = 1;
 
         public Action<DateTime> OnDateClick = (date) => { };
+        public Action<DateTime> OnOcupedDateClick = (date) => { };
 
         public FullCalendar()
         {
@@ -38,6 +39,7 @@ namespace MeetingScheduler.Components
             monthCalendar.OnDayClick += OnDayClick;
             dayCalendar.returnButton.Click += (s, a) => OnReturnButtonCLick();
             dayCalendar.OnHourClick += OnHourClick;
+            dayCalendar.OnOcupedHourClick += OnOcupedHourClick;
             month = monthCalendar.Month;
             year = monthCalendar.Year;
             UpdateDate();
@@ -85,6 +87,16 @@ namespace MeetingScheduler.Components
 
             DateTime dateTime = new(year, month, day, hour, minute, 0);
             OnDateClick.Invoke(dateTime);
+        }
+
+        private void OnOcupedHourClick(string time)
+        {
+            string[] timeSplited = time.Split(":");
+            hour = int.Parse(timeSplited[0]);
+            minute = int.Parse(timeSplited[1]);
+
+            DateTime dateTime = new(year, month, day, hour, minute, 0);
+            OnOcupedDateClick.Invoke(dateTime);
         }
 
         private void PreviousButtonClick(object sender, RoutedEventArgs e)

@@ -26,6 +26,7 @@ namespace MeetingScheduler.Components
         private Client[] clients = Array.Empty<Client>();
 
         public Action<string> OnHourClick = (hour) => { };
+        public Action<string> OnOcupedHourClick = (hour) => { };
 
         public DayCalendar()
         {
@@ -47,6 +48,7 @@ namespace MeetingScheduler.Components
             {
                 if (button.Background != NormalButtonBackGround)
                 {
+                    OnOcupedHourClick.Invoke((string)button.Content);
                     return;
                 }
                 OnHourClick.Invoke((string)button.Content);

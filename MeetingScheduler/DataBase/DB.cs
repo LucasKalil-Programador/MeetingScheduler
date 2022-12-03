@@ -171,6 +171,31 @@ namespace MeetingScheduler
             }
         }
 
+        public static Location SelectAllLocationsWhereID(int id)
+        {
+            lock (connection)
+            {
+                Location location = default;
+                string command = $"select * from location where idlocation;";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    location = new LocationFactory()
+                        .SetId(Reader.GetInt32(0))
+                        .SetName(Reader.GetString(1))
+                        .SetAddress(Reader.GetString(2))
+                        .SetCep(Reader.GetString(3))
+                        .SetCapacity(Reader.GetInt32(4))
+                        .SetRoom(Reader.GetString(5))
+                        .Build();
+                }
+                Reader.Close();
+
+                return location;
+            }
+        }
+
         public static bool LocationIsOcupedAtDate(Location location, DateTime dateTime)
         {
             int count = -1;
@@ -232,6 +257,38 @@ namespace MeetingScheduler
                 int rows = cmd.ExecuteNonQuery();
                 return rows == 1;
             }
+        }
+
+        public static Meeting SelectMeetingFromMeeting(Client client, DateTime dateTime)
+        {
+            MeetingFactory factory = new();
+            int locationID = 0;
+            lock (connection)
+            {
+                string command = "select * from meeting inner join client_has_meeting, client where " +
+                    "client.idClient=client_has_meeting.Client and client_has_meeting.Meeting=meeting.idMeeting and " +
+                    $"client.idClient={client.Id} and '{dateTime.ToMySQLDateTimeFormat()}' BETWEEN meeting.start_date_time and meeting.end_date_time;";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    factory
+                        .SetId(reader.GetInt32(0))
+                        .SetStartDateTime(reader.GetDateTime(1))
+                        .SetEndDateTime(reader.GetDateTime(2))
+                        .SetDescription(reader.GetString(4))
+                        .SetSubject(reader.GetString(5))
+                        .SetName(reader.GetString(6))
+                        .SetPriority(reader.GetInt32(7));
+                    locationID = reader.GetInt32(3);
+                }
+                reader.Close();        
+            }
+            factory.SetLocation(SelectAllLocationsWhereID(locationID));
+
+
+            return factory.Build();
         }
 
         public static int SelectIdFromMeeting(Meeting meeting)

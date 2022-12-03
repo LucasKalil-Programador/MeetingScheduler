@@ -8,13 +8,30 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
             <RowDefinition/>
+            <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
-        <local:FullCalendar x:Name="calendar"/>
+
+        <ScrollViewer Grid.RowSpan="2" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Titulo"/>
+                <TextBox HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="Assunto"/>
+                <TextBox HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="Descrição"/>
+                <TextBox HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text=""/>
+                <TextBox HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <local:FullCalendar x:Name="calendar" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </UserControl>

@@ -19,7 +19,7 @@ namespace MeetingScheduler.Components
     public partial class UserHome : UserControl
     {
         private readonly UserControl[] userControls;
-        private Client LogedClient;
+        public Client LogedClient;
 
         public UserHome()
         {
@@ -33,6 +33,7 @@ namespace MeetingScheduler.Components
         public void LogClient(Client newClient)
         {
             LogedClient = newClient;
+            meetingDetails.SetClient(newClient);
         }
 
         public void ChangeControl(UserControl newControl)
