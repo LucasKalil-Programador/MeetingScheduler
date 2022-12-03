@@ -52,6 +52,7 @@ namespace MeetingScheduler.Components
 
         private void OnDateTimeButtonClick(object sender, RoutedEventArgs e)
         {
+            dateRequest.calendar.SetLocationAndParticipants(location, clients);
             dateRequest.ShowDialog();
             if (dateRequest.resultDateTime != default)
             {

@@ -108,6 +108,27 @@ namespace MeetingScheduler
             }
         }
 
+        public static bool ClientIsOcupedAtDate(Client client, DateTime dateTime)
+        {
+            int count = -1;
+            lock (connection)
+            {
+                string command = "select count(*) from client inner join client_has_meeting, Meeting where " +
+                    "client.idClient=client_has_meeting.Client and client_has_meeting.Meeting=meeting.idMeeting and " +
+                    $"client.idClient={client.Id} and '{dateTime.ToMySQLDateTimeFormat()}' BETWEEN meeting.start_date_time and meeting.end_date_time;";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    count = reader.GetInt32("count(*)");
+                }
+                reader.Close();
+            }
+            return count > 0;
+        }
+
+
         #endregion Client
 
         #region Location
@@ -149,6 +170,28 @@ namespace MeetingScheduler
                 return locations.ToArray();
             }
         }
+
+        public static bool LocationIsOcupedAtDate(Location location, DateTime dateTime)
+        {
+            int count = -1;
+            lock (connection)
+            {
+                string command = "Select count(*) from location " +
+                           $"inner join meeting where location.idLocation=meeting.Location and " +
+                           $"{location.Id}=location.idLocation and" +
+                           $"'{dateTime.ToMySQLDateTimeFormat()}' BETWEEN meeting.start_date_time AND meeting.end_date_time;";
+                MySqlCommand cmd = new(command, connection.Value);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    count = reader.GetInt32("count(*)");
+                }
+                reader.Close();
+            }
+            return count > 0;
+        }
+
 
         #endregion Location
 

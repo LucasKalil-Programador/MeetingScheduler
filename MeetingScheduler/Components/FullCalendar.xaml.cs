@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetingScheduler.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,6 +105,11 @@ namespace MeetingScheduler.Components
         {
             dateTextBlock.Text = $"{month}/{year}";
             monthCalendar.SetYearAndMonth(year, month);
+        }
+
+        public void SetLocationAndParticipants(Location location, Client[] clients)
+        {
+            dayCalendar.SetLocationAndParticipants(location, clients);
         }
     }
 }

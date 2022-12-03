@@ -8,9 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <ScrollViewer Grid.Column="1">
@@ -45,9 +44,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Button x:Name="returnButton" Content="Voltar" Margin="10"/>
+            <TextBlock Grid.Row="2" Text="Local ocupado" TextWrapping="WrapWithOverflow" HorizontalAlignment="Stretch" Background="Yellow"/>
+            <TextBlock Grid.Row="3" Text="Participante ocupado" TextWrapping="WrapWithOverflow" HorizontalAlignment="Stretch" Background="Blue"/>
+            <TextBlock Grid.Row="4" Text="Ambos ocupados" TextWrapping="WrapWithOverflow" HorizontalAlignment="Stretch" Background="Purple"/>
         </Grid>
     </Grid>
 </UserControl>
