@@ -19,7 +19,7 @@ namespace MeetingScheduler.Components
     public partial class DayCalendar : UserControl
     {
 
-        private Brush NormalButtonBackGround;
+        private readonly Brush NormalButtonBackGround;
 
         private DateTime date = default;
         private Location location = default;
@@ -66,10 +66,7 @@ namespace MeetingScheduler.Components
                     int minute = int.Parse(timeSplited[1]);
 
                     DateTime dateTime = new(date.Year, date.Month, date.Day, hour, minute, 0);
-                    if (dateTime < DateTime.Now)
-                    {
-                        button.IsEnabled = false;
-                    }
+                    button.IsEnabled = dateTime > DateTime.Now;
                 }
             }
             CheckLocationIsOcuped();

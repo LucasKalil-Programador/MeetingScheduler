@@ -19,10 +19,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" x:Name="meetingButton" Background="DarkGray" Margin="5" Content="Agendar reuniao"/>
-            <Button Grid.Column="1" Background="DarkGray" Margin="5"/>
+            <Button Grid.Column="1" x:Name="meetingDetailsButton" Background="DarkGray" Margin="5" Content="Detalhe sobre reunioes"/>
             <Button Grid.Column="2" Background="DarkGray" Margin="5"/>
         </Grid>
 
         <local:MeetingCreator x:Name="meetingCreator" Grid.Row="1" Visibility="Hidden" IsEnabled="False"/>
+        <local:MeetingDetails x:Name="meetingDetails" Grid.Row="1" Visibility="Hidden" IsEnabled="False"/>
     </Grid>
 </UserControl>

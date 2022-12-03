@@ -19,6 +19,9 @@
     <Compile Update="Components\MeetingCreator.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\MeetingDetails.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\MonthCalendar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -52,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\MeetingCreator.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\MeetingDetails.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\MonthCalendar.xaml">

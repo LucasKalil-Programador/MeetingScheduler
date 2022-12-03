@@ -51,3 +51,5 @@ C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\n
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\OtherWindows\DateTimeUserRequest.baml
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\OtherWindows\TeamUserRequest.g.cs
 C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\OtherWindows\TeamUserRequest.baml
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\MeetingDetails.g.cs
+C:\Users\lucas\OneDrive\C# Projets\MeetingScheduler\MeetingScheduler\obj\Debug\net6.0-windows\Components\MeetingDetails.baml

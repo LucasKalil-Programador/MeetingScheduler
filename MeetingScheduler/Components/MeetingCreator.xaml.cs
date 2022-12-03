@@ -28,7 +28,7 @@ namespace MeetingScheduler.Components
         private Location location = default;
         private DateTime dateTime = default;
 
-        private Brush validBrush;
+        private readonly Brush validBrush;
 
         public MeetingCreator()
         {

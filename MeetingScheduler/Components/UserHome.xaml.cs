@@ -26,6 +26,7 @@ namespace MeetingScheduler.Components
             InitializeComponent();
             userControls = GetControls();
             meetingButton.Click += (s, a) => ChangeControl(meetingCreator);
+            meetingDetailsButton.Click += (s, a) => ChangeControl(meetingDetails);
             ChangeControl(meetingCreator);
         }
 
